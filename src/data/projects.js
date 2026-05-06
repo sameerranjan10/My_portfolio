@@ -53,15 +53,15 @@ export const projects = [
     subtitle: "AI Crop Recommendation System",
     category: ["ml", "ai"],
     status: "live",
-    statusLabel: "Completed",
+    statusLabel: "Live",
     badge: "Hacknovation 1.0",
     description:
-      "AI-based crop recommendation engine built to empower farmers with smarter, data-driven agricultural decisions. Code with a purpose — directly improving livelihoods.",
+      "AI-based crop recommendation engine and full-stack agriculture platform that connects farmers and buyers through a modern digital marketplace, helping farmers make smarter, data-driven agricultural decisions and improving livelihoods through technology.",
     tech: ["Python", "Machine Learning", "Data Analysis", "AI", "Agriculture Tech"],
     github: "https://github.com/sameerranjan10/Agroconnect",
-    demo: null,
+    demo:"https://agroconnect-phi.vercel.app/",
     color: "#4ade80",
-    highlight: false,
+    highlight: true,
   },
   {
     id: 5,
@@ -74,7 +74,7 @@ export const projects = [
     description:
       "A comprehensive ERP system with a well-structured database schema and workflow modules for academic management. Taught system design discipline and robust back-end architecture.",
     tech: ["Java", "Servlets", "JSP", "MySQL", "Apache Tomcat"],
-    github: null,
+    github: "https://github.com/sameerranjan10/ERP_system_learning_project",
     demo: null,
     color: "#818cf8",
     highlight: false,

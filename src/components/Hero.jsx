@@ -101,8 +101,7 @@ export default function Hero() {
                     "CS Student",     2000,
                     "Full-Stack Dev",  2000,
                     "ML Enthusiast",   2000,
-                    "Hackathon Winner",2000,
-                    "AI Explorer",     2000,
+                    "Hackathon Winner",2000
                   ]}
                   wrapper="span"
                   speed={50}
@@ -212,7 +211,7 @@ export default function Hero() {
 
               {/* Info */}
               <div className="p-5">
-                <div className="font-display font-bold text-lg text-gray-900 dark:text-white">Sameer R. Nayak</div>
+                <div className="font-display font-bold text-lg text-gray-900 dark:text-white">Sameer Ranjan Nayak</div>
                 <div className="text-gray-500 dark:text-white/50 text-sm mt-0.5 mb-4">CS Student · Web Dev · ML</div>
                 <div className="flex flex-wrap gap-1.5">
                   {["Python", "React", "ML", "AI"].map(t => (
@@ -229,23 +228,7 @@ export default function Hero() {
                   <span className="text-gray-400 dark:text-white/30 text-xs">📍 Gunupur, Odisha, IN</span>
                 </div>
               </div>
-            </div>
-
-            {/* Floating badges */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -right-8 px-3 py-2 rounded-xl bg-yellow-400/10 border border-yellow-400/20 backdrop-blur-sm"
-            >
-              <span className="text-yellow-400 text-sm font-mono">🏆 1st Place</span>
-            </motion.div>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 4, delay: 1, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-8 px-3 py-2 rounded-xl bg-teal-400/10 border border-teal-400/20 backdrop-blur-sm"
-            >
-              <span className="text-teal-400 text-sm font-mono">🤖 AI Builder</span>
-            </motion.div>
+            </div>        
           </motion.div>
         </div>
       </div>
