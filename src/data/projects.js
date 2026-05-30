@@ -22,7 +22,6 @@ export const projects = [
     category: ["ai", "fullstack"],
     status: "live",
     statusLabel: "Live",
-    badge: "SIH 2024 & 2025 Selected",
     description:
       "An AI-driven platform that connects students with alumni through recommendation-based matching — bridging the gap between campus and the real world. Selected at Smart India Hackathon 2024 and 2025.",
     tech: ["Python", "FastAPI", "JWT", "Recommendation Systems", "React.js", "AI"],
@@ -33,19 +32,18 @@ export const projects = [
   },
   {
     id: 3,
-    title: "MedAnalyzer",
+    title: "MedAssist-V2",
     subtitle: "Medical Report Analysis",
     category: ["ml"],
     status: "live",
     statusLabel: "Completed",
-    badge: "Hacknovation 2.0",
     description:
       "ML-powered medical report analyzer applying data science techniques to surface meaningful health patterns from raw reports. Demonstrated how AI can contribute to better healthcare outcomes.",
     tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "ML"],
-    github: "https://github.com/sameerranjan10/MedAssist",
-    demo: null,
-    color: "#f97316",
-    highlight: false,
+    github: "https://github.com/sameerranjan10/MedAssist-V2",
+    demo: "https://med-assist-v2.vercel.app/",
+    color: "#0ce655",
+    highlight: true,
   },
   {
     id: 4,

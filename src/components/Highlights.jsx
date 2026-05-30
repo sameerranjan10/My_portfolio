@@ -48,20 +48,7 @@ const achievements = [
     label: "GDG TechSprint",
     sub: "1st Place Winner",
     color: "#eab308",
-  },
-  {
-    icon: "🇮🇳",
-    label: "Smart India Hackathon",
-    sub: "Selected in both the internals of 2024 & 2025",
-    color: "#2dd4bf",
-  },
-  {
-    icon: "💡",
-    label: "Hacknovation 1.0 & 2.0",
-    sub: "participated in both the hackathons",
-    color: "#f97316",
-  },
-  
+  } 
 ];
 
 function ValueCard({ v, i }) {
@@ -156,27 +143,7 @@ export default function Highlights() {
         </SectionWrapper>
 
         {/* Quote banner */}
-        <SectionWrapper>
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            className="mt-16 relative p-8 sm:p-12 rounded-3xl border border-yellow-400/10 overflow-hidden text-center"
-            style={{ background: "linear-gradient(135deg, rgba(234,179,8,0.04) 0%, rgba(45,212,191,0.03) 100%)" }}
-          >
-            <div className="absolute -top-6 -left-6 text-[120px] text-yellow-400/05 font-serif select-none leading-none">"</div>
-            <div className="absolute -bottom-10 -right-6 text-[120px] text-yellow-400/05 font-serif select-none leading-none">"</div>
-            <div className="relative">
-              <p className="font-display font-semibold text-xl sm:text-2xl text-gray-600 dark:text-white/80 leading-relaxed max-w-2xl mx-auto">
-                I don't just want to write code. I want to build things that{" "}
-                <span className="gradient-text">leave a mark</span>.
-              </p>
-              <div className="mt-6 flex items-center justify-center gap-2">
-                <div className="w-8 h-px bg-yellow-400/40" />
-                <span className="text-yellow-400/60 text-sm font-mono">Sameer Ranjan Nayak</span>
-                <div className="w-8 h-px bg-yellow-400/40" />
-              </div>
-            </div>
-          </motion.div>
-        </SectionWrapper>
+        
       </div>
     </section>
   );

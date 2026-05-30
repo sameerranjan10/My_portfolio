@@ -40,7 +40,7 @@ export default function Resume() {
                 <div className="flex-1">
                   <div className="font-mono text-xs text-yellow-400/60 tracking-widest mb-1">CURRICULUM VITAE</div>
                   <h3 className="font-display font-extrabold text-2xl text-gray-900 dark:text-white">Sameer Ranjan Nayak</h3>
-                  <p className="text-gray-500 dark:text-white/40 text-sm mt-1">CS Student · Web Developer · ML Enthusiast · Gunupur, Odisha, India</p>
+                  <p className="text-gray-500 dark:text-white/40 text-sm mt-1">CSE Student · Web Developer · ML Enthusiast · Gunupur, Odisha, India</p>
                 </div>
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-400/10 border border-green-400/20">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
