@@ -192,22 +192,36 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
   }, [autoplay, autoplaySpeed, isHovered, isDragging]);
 
   const scrollLeft = (e) => {
-    if (e) e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (carouselRef.current) {
       const cardEl = carouselRef.current.querySelector(".flex-shrink-0");
       const gap = window.innerWidth < 768 ? 16 : 32;
-      const cardWidth = cardEl ? cardEl.offsetWidth + gap : 360;
-      carouselRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      const cardWidth = cardEl ? cardEl.offsetWidth + gap : 320;
+      const currentScroll = carouselRef.current.scrollLeft;
+      carouselRef.current.scrollTo({
+        left: currentScroll - cardWidth,
+        behavior: "smooth"
+      });
     }
   };
 
   const scrollRight = (e) => {
-    if (e) e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (carouselRef.current) {
       const cardEl = carouselRef.current.querySelector(".flex-shrink-0");
       const gap = window.innerWidth < 768 ? 16 : 32;
-      const cardWidth = cardEl ? cardEl.offsetWidth + gap : 360;
-      carouselRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
+      const cardWidth = cardEl ? cardEl.offsetWidth + gap : 320;
+      const currentScroll = carouselRef.current.scrollLeft;
+      carouselRef.current.scrollTo({
+        left: currentScroll + cardWidth,
+        behavior: "smooth"
+      });
     }
   };
 
@@ -244,7 +258,7 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
       {/* Outer wrapper to prevent layout clipping left & right */}
       <div
         className={cn(
-          "flex w-full overflow-x-auto overscroll-x-contain snap-x snap-mandatory scroll-smooth py-3 sm:py-6 [scrollbar-width:none] cursor-grab active:cursor-grabbing px-4 sm:px-8 md:px-16 justify-start",
+          "flex w-full overflow-x-auto overscroll-x-contain scroll-smooth py-3 sm:py-6 [scrollbar-width:none] cursor-grab active:cursor-grabbing px-4 sm:px-8 md:px-16 justify-start",
           isDragging && "cursor-grabbing scroll-auto"
         )}
         ref={carouselRef}
@@ -258,7 +272,7 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
           {loopedItems.map((item, index) => (
             <div
               key={`looped-${index}`}
-              className="flex-shrink-0 snap-center"
+              className="flex-shrink-0"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               onClick={() => handleCardClick(item.props.project)}
@@ -273,8 +287,9 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
       <div className="flex justify-center gap-3 mt-3 sm:mt-4">
         <button
           type="button"
-          className="relative z-40 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#f2f2ed] dark:bg-[#151516] border border-black/[0.08] dark:border-white/[0.08] hover:bg-[#e8e8e2] dark:hover:bg-[#1e1d1f] hover:border-yellow-500/40 active:scale-95 shadow-sm touch-manipulation cursor-pointer"
+          className="relative z-40 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#f2f2ed] dark:bg-[#151516] border border-black/[0.08] dark:border-white/[0.08] hover:bg-[#e8e8e2] dark:hover:bg-[#1e1d1f] hover:border-yellow-500/40 active:scale-95 shadow-sm touch-manipulation cursor-pointer select-none"
           onClick={scrollLeft}
+          onTouchEnd={scrollLeft}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           aria-label="Scroll left"
@@ -283,8 +298,9 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
         </button>
         <button
           type="button"
-          className="relative z-40 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#f2f2ed] dark:bg-[#151516] border border-black/[0.08] dark:border-white/[0.08] hover:bg-[#e8e8e2] dark:hover:bg-[#1e1d1f] hover:border-yellow-500/40 active:scale-95 shadow-sm touch-manipulation cursor-pointer"
+          className="relative z-40 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#f2f2ed] dark:bg-[#151516] border border-black/[0.08] dark:border-white/[0.08] hover:bg-[#e8e8e2] dark:hover:bg-[#1e1d1f] hover:border-black/15 dark:hover:border-white/15 disabled:opacity-30 transition-all hover:scale-105 active:scale-95 shadow-sm touch-manipulation cursor-pointer select-none"
           onClick={scrollRight}
+          onTouchEnd={scrollRight}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           aria-label="Scroll right"
