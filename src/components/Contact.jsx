@@ -250,7 +250,7 @@ export default function Contact() {
                   disabled={status === "loading"}
                   whileHover={status !== "loading" ? { scale: 1.02, y: -1 } : {}}
                   whileTap={status !== "loading" ? { scale: 0.98 } : {}}
-                  className="w-full py-3.5 rounded-xl font-display font-bold text-sm transition-all relative overflow-hidden"
+                  className="w-full py-3.5 rounded-xl font-display font-bold text-sm transition-all relative overflow-hidden min-h-[48px]"
                   style={{
                     background:
                       status === "success"

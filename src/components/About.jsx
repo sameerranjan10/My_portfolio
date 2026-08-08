@@ -124,9 +124,9 @@ export default function About() {
           </motion.div>
 
           {/* ─── Right Column: Editorial Landing Content ─── */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
             {/* Section label */}
-            <motion.div variants={fadeSlideUp} className="inline-flex items-center gap-2 mb-4 md:mb-6">
+            <motion.div variants={fadeSlideUp} className="inline-flex items-center gap-2 mb-4 md:mb-6 justify-center lg:justify-start">
               <motion.div initial={{ width: 0 }} animate={{ width: 32 }} transition={{ duration: 0.6, delay: 0.2 }} className="h-px bg-yellow-400/40" />
               <span className="text-yellow-400 text-xs font-mono tracking-[0.2em] uppercase">
                 // 01 About
@@ -135,12 +135,12 @@ export default function About() {
             </motion.div>
 
             {/* Enhanced Kinetic Typography Headline */}
-            <div className="mb-6 md:mb-8 overflow-hidden">
-              <h1 className="font-display font-black text-[clamp(3.2rem,7vw,5.5rem)] leading-[0.88] tracking-tighter text-gray-900 dark:text-white perspective-[1000px]">
+            <div className="mb-6 md:mb-8 overflow-hidden w-full text-center lg:text-left">
+              <h1 className="font-display font-black text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.92] sm:leading-[0.88] tracking-tighter text-gray-900 dark:text-white perspective-[1000px]">
                 <span className="block overflow-hidden py-1">
                   <motion.span
                     variants={lineReveal(0.08)}
-                    className="block transform-gpu origin-bottom-left"
+                    className="block transform-gpu origin-bottom sm:origin-bottom-left"
                   >
                     Sameer
                   </motion.span>
@@ -148,7 +148,7 @@ export default function About() {
                 <span className="block overflow-hidden py-1">
                   <motion.span
                     variants={lineReveal(0.2)}
-                    className="block transform-gpu origin-bottom-left"
+                    className="block transform-gpu origin-bottom sm:origin-bottom-left"
                   >
                     Ranjan
                   </motion.span>
@@ -156,7 +156,7 @@ export default function About() {
                 <span className="block overflow-hidden py-1">
                   <motion.span
                     variants={lineReveal(0.32)}
-                    className="block text-yellow-400 transform-gpu origin-bottom-left"
+                    className="block text-yellow-400 transform-gpu origin-bottom sm:origin-bottom-left"
                   >
                     Nayak
                   </motion.span>
@@ -165,7 +165,7 @@ export default function About() {
             </div>
 
             {/* Subtitle */}
-            <motion.div variants={fadeSlideUp} className="mb-5 md:mb-6">
+            <motion.div variants={fadeSlideUp} className="mb-5 md:mb-6 text-center lg:text-left">
               <p className="font-display text-lg md:text-xl font-semibold text-gray-700 dark:text-white/80 tracking-tight">
                 Computer Science Student
               </p>
@@ -177,7 +177,7 @@ export default function About() {
             {/* Bio description */}
             <motion.p
               variants={fadeSlideUp}
-              className="text-gray-500 dark:text-white/55 text-sm md:text-base font-light leading-[1.8] mb-8 max-w-xl mx-auto lg:mx-0"
+              className="text-gray-500 dark:text-white/55 text-sm md:text-base font-light leading-[1.8] mb-8 max-w-xl text-center lg:text-left"
             >
               I'm a Computer Science student passionate about building intelligent web applications
               using Artificial Intelligence, Machine Learning, and modern web technologies. I enjoy
@@ -187,7 +187,7 @@ export default function About() {
             {/* ─── Stats Grid ─── */}
             <motion.div
               variants={fadeSlideUp}
-              className="grid grid-cols-2 gap-4 mb-8 max-w-sm mx-auto lg:mx-0"
+              className="grid grid-cols-2 gap-4 mb-8 w-full max-w-sm"
             >
               {STATS.map((stat, i) => (
                 <motion.div
@@ -214,14 +214,14 @@ export default function About() {
             {/* ─── Action Buttons ─── */}
             <motion.div
               variants={fadeSlideUp}
-              className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8"
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8 w-full sm:w-auto"
             >
               <motion.a
                 href="/Sameer_Ranjan_Nayak_Elite_Internship_CV_With_Certifications.pdf"
                 download
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-primary inline-flex items-center justify-center gap-2 min-h-[48px] px-6 text-sm font-bold rounded-full w-full sm:w-auto text-center"
               >
                 <FiDownload className="w-4 h-4" />
                 Download Resume
@@ -230,7 +230,7 @@ export default function About() {
                 href="#projects"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-secondary inline-flex items-center gap-2"
+                className="btn-secondary inline-flex items-center justify-center gap-2 min-h-[48px] px-6 text-sm font-bold rounded-full w-full sm:w-auto text-center"
                 onClick={e => {
                   e.preventDefault();
                   document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
@@ -244,22 +244,25 @@ export default function About() {
             {/* ─── Social Icons ─── */}
             <motion.div
               variants={fadeSlideUp}
-              className="flex items-center gap-2 justify-center lg:justify-start"
+              className="flex items-center justify-center lg:justify-start w-full"
             >
-              {SOCIALS.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target={social.href.startsWith("mailto") ? undefined : "_blank"}
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-xl bg-[#f2f2ed] dark:bg-[#111111] border border-black/[0.06] dark:border-white/[0.06] flex items-center justify-center text-gray-500 dark:text-white/40 hover:text-yellow-400 hover:border-yellow-400/25 transition-all duration-300"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </motion.a>
-              ))}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                {SOCIALS.map((soc) => {
+                  const Icon = soc.icon;
+                  return (
+                    <a
+                      key={soc.label}
+                      href={soc.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-2xl bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-gray-700 dark:text-white/80 hover:text-yellow-500 dark:hover:text-yellow-400 hover:border-yellow-400/40 transition-all flex items-center justify-center min-w-[48px] min-h-[48px] touch-manipulation shadow-sm"
+                      aria-label={soc.label}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  );
+                })}
+              </div>
             </motion.div>
           </div>
         </div>

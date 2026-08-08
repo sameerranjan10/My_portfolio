@@ -58,9 +58,9 @@ export default function Footer() {
 
       <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 pb-10 text-center md:text-left">
           {/* Brand & Social (col-span-4) */}
-          <div className="md:col-span-4 flex flex-col gap-4">
+          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-4">
             <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="flex items-center gap-2.5 w-max group">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center text-black font-extrabold text-base shadow-md group-hover:scale-105 transition-transform">
                 S
@@ -70,17 +70,16 @@ export default function Footer() {
               </span>
             </a>
 
-            <p className="text-gray-600 dark:text-white/60 max-w-sm font-sans text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-white/60 max-w-sm font-sans text-sm leading-relaxed text-center md:text-left">
               Full-Stack Developer crafting intelligent, scalable, and high-impact web applications powered by modern technologies and AI.
-
             </p>
 
             {/* Social Link Icon Buttons */}
-            <div className="flex items-center gap-2.5 mt-2">
+            <div className="flex items-center justify-center md:justify-start gap-2.5 mt-2">
               {socialLinks.map((item, i) => (
                 <a
                   key={i}
-                  className="p-2.5 rounded-xl border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.04] text-gray-700 dark:text-white/70 hover:text-yellow-500 dark:hover:text-yellow-400 hover:border-yellow-400/40 dark:hover:border-yellow-400/40 hover:bg-yellow-400/10 transition-all shadow-sm"
+                  className="p-3 rounded-xl border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.04] text-gray-700 dark:text-white/70 hover:text-yellow-500 dark:hover:text-yellow-400 hover:border-yellow-400/40 dark:hover:border-yellow-400/40 hover:bg-yellow-400/10 transition-all shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center"
                   target="_blank"
                   rel="noopener noreferrer"
                   href={item.link}
@@ -93,15 +92,15 @@ export default function Footer() {
           </div>
 
           {/* Navigation Column (col-span-1) */}
-          <div className="md:col-span-1 flex flex-col gap-2">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start gap-2">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-gray-400 dark:text-white/40 mb-1">
               Navigation
             </span>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col items-center md:items-start gap-1.5">
               {navigateLinks.map(({ href, title }, i) => (
                 <a
                   key={i}
-                  className="w-max py-0.5 text-sm text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline"
+                  className="w-max py-1 text-sm text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline min-h-[36px] flex items-center"
                   href={href}
                   onClick={(e) => scrollTo(href, e)}
                 >
@@ -112,15 +111,15 @@ export default function Footer() {
           </div>
 
           {/* Connect Column (col-span-1) */}
-          <div className="md:col-span-1 flex flex-col gap-2">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start gap-2">
             <span className="text-xs font-mono font-bold tracking-widest uppercase text-gray-400 dark:text-white/40 mb-1">
               Connect
             </span>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col items-center md:items-start gap-1.5">
               {connectLinks.map(({ href, title, external }, i) => (
                 <a
                   key={i}
-                  className="w-max py-0.5 text-sm text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline"
+                  className="w-max py-1 text-sm text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline min-h-[36px] flex items-center"
                   href={href}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}

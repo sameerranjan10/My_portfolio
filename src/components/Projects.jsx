@@ -60,8 +60,8 @@ const Card = ({ project, onClick, isDuplicate }) => {
       whileHover={{ y: -8, transition: { duration: 0.25, ease: "easeOut" } }}
       onClick={onClick}
       className={cn(
-        "relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#fafafa] dark:bg-[#0f0f10] border border-black/[0.06] dark:border-white/[0.06] shadow-sm hover:shadow-2xl cursor-pointer select-none group text-left transition-colors duration-300",
-        "w-80 md:w-[26rem] h-[20rem] md:h-[24rem] p-4",
+        "relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#fafafa] dark:bg-[#0f0f10] border border-black/[0.06] dark:border-white/[0.06] shadow-sm hover:shadow-2xl cursor-pointer select-none group text-left transition-colors duration-300 mx-auto",
+        "w-[82vw] max-w-[320px] sm:w-80 md:w-[26rem] h-[19.5rem] sm:h-[20rem] md:h-[24rem] p-4",
         "hover:border-yellow-400/40 dark:hover:border-yellow-400/40"
       )}
     >
@@ -150,7 +150,8 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
 
   useEffect(() => {
     if (carouselRef.current) {
-      const cardWidth = window.innerWidth < 768 ? 336 : 448; // Card + gap (24px)
+      const cardEl = carouselRef.current.querySelector(".flex-shrink-0");
+      const cardWidth = cardEl ? cardEl.offsetWidth + (window.innerWidth < 640 ? 16 : 24) : (window.innerWidth < 640 ? 300 : 448);
       // Initial Scroll position to the middle loop
       carouselRef.current.scrollLeft = cardWidth * items.length;
       checkScrollability();
@@ -236,7 +237,7 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
       {/* Outer wrapper to prevent layout clipping left & right */}
       <div
         className={cn(
-          "flex w-full overflow-x-auto overscroll-x-auto scroll-smooth py-6 [scrollbar-width:none] cursor-grab active:cursor-grabbing px-6 md:px-16",
+          "flex w-full overflow-x-auto overscroll-x-auto scroll-smooth py-6 [scrollbar-width:none] cursor-grab active:cursor-grabbing px-4 sm:px-8 md:px-16 justify-start",
           isDragging && "cursor-grabbing scroll-auto"
         )}
         ref={carouselRef}
@@ -246,7 +247,7 @@ const Carousel = ({ items, filter, initialScroll = 0, autoplay = true, autoplayS
         onMouseUp={() => setIsDragging(false)}
         onMouseMove={handleMouseMove}
       >
-        <div className="flex flex-row justify-start gap-6 md:gap-8 pr-16 md:pr-32">
+        <div className="flex flex-row justify-start gap-4 sm:gap-6 md:gap-8 pr-12 md:pr-32">
           {loopedItems.map((item, index) => (
             <div
               key={`looped-${index}`}
@@ -310,40 +311,36 @@ export default function Projects() {
   }, [activeProject]);
 
   return (
-    <section id="projects" className="py-24 overflow-visible relative">
-      {/* Background glow behind container */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-yellow-400/[0.03] dark:bg-yellow-400/[0.02] rounded-full blur-[120px] pointer-events-none" />
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] pointer-events-none">
+        <div className="w-full h-full rounded-full bg-yellow-400/[0.03] blur-[120px]" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="relative z-10 space-y-12">
+        {/* Section Header */}
         <SectionWrapper>
           <SectionHeader
-            label="// 03 — work"
-            title="Projects"
-            subtitle="Things I've built that I'm proud of — from hackathon winners to AI experiments."
+            eyebrow="Portfolio"
+            title="Featured Projects"
+            subtitle="Explore real-world software solutions spanning machine learning, full-stack web platforms, and developer tooling."
           />
-        </SectionWrapper>
 
-        {/* Filters */}
-        <SectionWrapper>
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {projectFilters.map(f => (
-              <motion.button
+          {/* Filter Pills with touch targets */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8 px-2">
+            {projectFilters.map((f) => (
+              <button
                 key={f.id}
                 onClick={() => setFilter(f.id)}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
                 className={cn(
-                  "px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-2 border",
+                  "px-4 py-2 text-xs font-mono rounded-full border transition-all duration-200 min-h-[40px] flex items-center touch-manipulation",
                   filter === f.id
-                    ? "bg-yellow-400 border-yellow-400 text-black shadow-md font-bold"
-                    : "bg-[#e8e8e2] dark:bg-[#121213] border-black/[0.08] dark:border-white/[0.06] text-gray-500 dark:text-white/45 hover:text-gray-800 dark:hover:text-white hover:border-black/15 dark:hover:border-white/12"
+                    ? "bg-yellow-400 text-black font-bold border-yellow-400 shadow-md shadow-yellow-400/20"
+                    : "border-black/10 dark:border-white/10 text-gray-600 dark:text-white/60 hover:border-yellow-400/40 hover:text-gray-900 dark:hover:text-white bg-black/[0.02] dark:bg-white/[0.03]"
                 )}
               >
                 {f.label}
-                {filter === f.id && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-black" />
-                )}
-              </motion.button>
+              </button>
             ))}
           </div>
         </SectionWrapper>
@@ -369,7 +366,7 @@ export default function Projects() {
               href="https://github.com/sameerranjan10"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary inline-flex gap-2.5 items-center px-6 py-3 rounded-full hover:scale-105 active:scale-95 transition-transform"
+              className="btn-secondary inline-flex gap-2.5 items-center px-6 py-3.5 rounded-full hover:scale-105 active:scale-95 transition-transform min-h-[48px] text-sm font-semibold"
             >
               <FiGithub className="w-4 h-4" />
               View All on GitHub
@@ -381,29 +378,29 @@ export default function Projects() {
       {/* Expanded Modal Layout Details */}
       <AnimatePresence>
         {activeProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto">
             {/* Backdrop Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveProject(null)}
-              className="fixed inset-0 bg-black/75 backdrop-blur-md z-40 cursor-pointer"
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 cursor-pointer"
             />
 
             {/* Modal Card Box */}
             <motion.div
               layoutId={`card-${activeProject.id}`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-5xl bg-[#f5f5f0] dark:bg-[#0c0c0d] rounded-3xl overflow-hidden shadow-2xl z-50 border border-black/10 dark:border-white/10 flex flex-col md:flex-row h-auto max-h-[90vh] md:max-h-[85vh] select-none"
+              className="relative w-full max-w-5xl bg-[#f5f5f0] dark:bg-[#0c0c0d] rounded-3xl overflow-hidden shadow-2xl z-50 border border-black/10 dark:border-white/10 flex flex-col md:flex-row h-auto max-h-[92vh] md:max-h-[85vh] select-none my-auto"
             >
-              {/* Close Button */}
+              {/* Close Button (Min 44px touch size) */}
               <button
                 onClick={() => setActiveProject(null)}
-                className="absolute top-4 right-4 z-50 p-2.5 rounded-full bg-black/45 dark:bg-white/10 hover:bg-black/60 dark:hover:bg-white/20 text-white backdrop-blur-md transition-all hover:scale-105 active:scale-95"
+                className="absolute top-4 right-4 z-50 p-3 rounded-full bg-black/60 dark:bg-white/15 hover:bg-black/80 dark:hover:bg-white/25 text-white backdrop-blur-md transition-all active:scale-95 touch-manipulation flex items-center justify-center w-11 h-11"
                 aria-label="Close case study"
               >
                 <FiX className="w-5 h-5" />

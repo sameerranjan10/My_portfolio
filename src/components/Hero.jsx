@@ -106,12 +106,12 @@ export default function Hero() {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div {...fadeUp(0.5)} className="flex flex-wrap gap-3 justify-center lg:justify-start">
+            <motion.div {...fadeUp(0.5)} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start w-full sm:w-auto">
               <motion.a
                 href="#projects"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-primary"
+                className="btn-primary min-h-[48px] px-6 py-3 text-sm font-bold flex items-center justify-center rounded-full shadow-md w-full sm:w-auto text-center"
                 onClick={e => { e.preventDefault(); document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" }); }}
               >
                 View Projects →
@@ -120,7 +120,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-secondary"
+                className="btn-secondary min-h-[48px] px-6 py-3 text-sm font-bold flex items-center justify-center rounded-full shadow-md w-full sm:w-auto text-center"
                 onClick={e => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
               >
                 Get In Touch
