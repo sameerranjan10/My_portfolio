@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 
 const Orb = ({ x, y, size, color, delay = 0 }) => (
@@ -20,22 +20,7 @@ const STATS = [
 ];
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { damping: 50, stiffness: 200 });
-  const smoothY = useSpring(mouseY, { damping: 50, stiffness: 200 });
   const heroRef = useRef(null);
-
-  useEffect(() => {
-    const handler = e => {
-      if (!heroRef.current) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      mouseX.set((e.clientX - rect.left - rect.width / 2) * 0.015);
-      mouseY.set((e.clientY - rect.top - rect.height / 2) * 0.015);
-    };
-    window.addEventListener("mousemove", handler);
-    return () => window.removeEventListener("mousemove", handler);
-  }, [mouseX, mouseY]);
 
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 30 },
@@ -47,7 +32,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background orbs */}
       <Orb x="60%" y="-10%" size="600px" color="rgba(234,179,8,0.12)" delay={0} />
@@ -142,7 +127,7 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Stats row & GitHub Activity */}
+            {/* Stats row */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -163,73 +148,8 @@ export default function Hero() {
                   </motion.div>
                 ))}
               </div>
-
-              {/* GitHub Activity Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0, duration: 0.8 }}
-                className="w-full"
-              >
-                <div className="text-gray-600 dark:text-white/50 text-sm font-medium mb-3 tracking-wide">GitHub Activity</div>
-                <div className="w-full rounded-2xl overflow-hidden card-glass p-2">
-                  <img 
-                    src="https://github-readme-activity-graph.vercel.app/graph?username=sameerranjan10&theme=react-dark&hide_border=true" 
-                    alt="GitHub Activity Graph"
-                    className="w-full h-auto object-cover rounded-xl"
-                  />
-                </div>
-              </motion.div>
             </motion.div>
           </div>
-
-          {/* Right — Avatar card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block relative flex-shrink-0"
-            style={{ perspective: 1000, rotateX: smoothY, rotateY: smoothX }}
-          >
-            {/* Glow behind card */}
-            <div className="absolute inset-0 rounded-3xl bg-yellow-400/15 blur-2xl scale-90" />
-
-            {/* Card */}
-            <div className="relative w-72 rounded-3xl card-glass overflow-hidden">
-              {/* Top accent */}
-              <div className="h-1 w-full bg-gradient-to-r from-yellow-400 via-orange-400 to-teal-400" />
-
-              {/* Avatar placeholder */}
-              <div className="aspect-[3/4] w-full bg-gradient-to-br from-yellow-900/20 via-ink-800/50 to-teal-900/20 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-grid opacity-40" />
-              <img
-              src="/me.jpg"
-              alt="Sameer"
-              className="relative w-full h-full object-cover"
-              />
-              </div>
-
-              {/* Info */}
-              <div className="p-5">
-                <div className="font-display font-bold text-lg text-gray-900 dark:text-white">Sameer Ranjan Nayak</div>
-                <div className="text-gray-500 dark:text-white/50 text-sm mt-0.5 mb-4">CS Student · Web Dev · ML</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {["Python", "React", "ML", "AI"].map(t => (
-                    <span key={t} className="px-2.5 py-1 rounded-md bg-black/05 dark:bg-white/05 border border-black/08 dark:border-white/08 text-gray-500 dark:text-white/50 text-xs font-mono">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 pt-4 border-t border-black/08 dark:border-white/08 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-green-400 text-xs font-medium">Available</span>
-                  </div>
-                  <span className="text-gray-400 dark:text-white/30 text-xs">📍 Gunupur, Odisha, IN</span>
-                </div>
-              </div>
-            </div>        
-          </motion.div>
         </div>
       </div>
 

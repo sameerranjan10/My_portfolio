@@ -19,12 +19,12 @@ function TimelineItem({ item, i, isLeft }) {
           initial={{ scale: 0, opacity: 0 }}
           animate={inView ? { scale: 1, opacity: 1 } : {}}
           transition={{ duration: 0.4, delay }}
-          className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-lg z-10 bg-[#080807]"
+          className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-lg z-10 bg-[#fafaf7] dark:bg-[#080807]"
           style={{ borderColor: item.color }}
         >
           {item.icon}
         </motion.div>
-        <div className="w-px flex-1 bg-black/05 dark:bg-white/05 mt-2" />
+        <div className="w-px flex-1 bg-[#e8e8e2] dark:bg-[#1a1917] mt-2" />
       </div>
 
       {/* Mobile dot */}
@@ -33,7 +33,7 @@ function TimelineItem({ item, i, isLeft }) {
           initial={{ scale: 0 }}
           animate={inView ? { scale: 1 } : {}}
           transition={{ delay }}
-          className="w-9 h-9 rounded-full border-2 flex items-center justify-center text-base bg-[#080807]"
+          className="w-9 h-9 rounded-full border-2 flex items-center justify-center text-base bg-[#fafaf7] dark:bg-[#080807]"
           style={{ borderColor: item.color }}
         >
           {item.icon}
@@ -48,7 +48,7 @@ function TimelineItem({ item, i, isLeft }) {
         className={`md:w-1/2 ${isLeft ? "md:pr-14" : "md:pl-14"} flex-1 pb-10`}
       >
         <div
-          className="group relative p-5 rounded-2xl border bg-black/02 dark:bg-white/02 hover:bg-black/03 dark:bg-white/03 transition-all duration-300 overflow-hidden"
+          className="group relative p-5 rounded-2xl border bg-[#f2f2ed] dark:bg-[#111010] hover:bg-[#e8e8e2] dark:hover:bg-[#1a1917] transition-all duration-300 overflow-hidden"
           style={{ borderColor: `${item.color}20` }}
         >
           <div
@@ -78,7 +78,7 @@ export default function Timeline() {
       <div className="max-w-5xl mx-auto px-6 relative">
         <SectionWrapper>
           <SectionHeader
-            label="// 04 — journey"
+            label="// 05 — journey"
             title="My Story"
             subtitle="From first line of code to hackathon winner — a timeline of milestones."
           />
@@ -87,7 +87,7 @@ export default function Timeline() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line (desktop) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-black/08 dark:via-white/08 to-transparent" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-black/[0.08] dark:via-white/[0.08] to-transparent" />
 
           <div className="space-y-0">
             {timelineItems.map((item, i) => (

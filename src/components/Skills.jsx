@@ -12,7 +12,7 @@ function TechIcon({ icon, name, index }) {
       initial={{ opacity: 0, scale: 0.5, y: 20 }}
       animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.05, type: "spring", stiffness: 100 }}
-      className="relative group flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-black/02 dark:bg-white/02 border border-black/05 dark:border-white/05 hover:bg-black/05 dark:hover:bg-white/10 hover:border-yellow-500/30 transition-all cursor-pointer"
+      className="relative group flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#f2f2ed] dark:bg-[#111010] border border-black/[0.05] dark:border-white/[0.05] hover:bg-[#e8e8e2] dark:hover:bg-[#1a1917] hover:border-yellow-500/30 transition-all cursor-pointer z-10"
     >
       <div className="text-4xl sm:text-5xl transition-transform duration-300 group-hover:scale-110 drop-shadow-sm group-hover:drop-shadow-md flex items-center justify-center w-full h-full">
         {icon}
@@ -31,7 +31,7 @@ export default function Skills() {
   const allSkills = skillCategories.flatMap((cat) => cat.skills);
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
       {/* Subtle bg */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-yellow-950/5 to-transparent pointer-events-none" />
 

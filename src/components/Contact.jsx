@@ -96,7 +96,7 @@ export default function Contact() {
     <section id="contact" className="py-24 relative">
       {/* Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none">
-        <div className="w-full h-full rounded-full bg-yellow-400/05 blur-[100px]" />
+        <div className="w-full h-full rounded-full bg-yellow-400/[0.05] blur-[100px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
@@ -112,7 +112,7 @@ export default function Contact() {
           {/* Left info panel */}
           <div className="lg:col-span-2 space-y-6">
             <SectionWrapper>
-              <div className="p-6 rounded-2xl border border-black/06 dark:border-white/06 bg-black/02 dark:bg-white/02 space-y-5">
+              <div className="p-6 rounded-2xl border border-black/[0.06] dark:border-white/[0.06] bg-[#f2f2ed] dark:bg-[#111010] space-y-5">
                 <div>
                   <div className="text-xs font-mono text-yellow-400/70 tracking-wider mb-1">CURRENTLY</div>
                   <div className="flex items-center gap-2">
@@ -121,7 +121,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-black/06 dark:border-white/06">
+                <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06]">
                   <div className="text-xs font-mono text-gray-400 dark:text-white/30 tracking-wider mb-3">REACH OUT VIA</div>
                   <div className="space-y-3">
                     {socials.map(s => (
@@ -131,7 +131,7 @@ export default function Contact() {
                         target={s.label !== "Email" ? "_blank" : undefined}
                         rel="noopener noreferrer"
                         whileHover={{ x: 4 }}
-                        className="flex items-center gap-3 text-gray-500 dark:text-white/50 hover:text-gray-900 dark:text-white text-sm font-medium transition-colors group"
+                        className="flex items-center gap-3 text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors group"
                       >
                         <div
                           className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors"
@@ -146,7 +146,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-black/06 dark:border-white/06">
+                <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06]">
                   <div className="text-xs font-mono text-gray-400 dark:text-white/30 tracking-wider mb-2">LOCATION</div>
                   <div className="text-gray-600 dark:text-white/60 text-sm flex items-center gap-2">
                     <span>📍</span> Gunupur, Odisha, India
@@ -161,7 +161,7 @@ export default function Contact() {
                 href="/Sameer_Ranjan_Nayak_Elite_Internship_CV_With_Certifications.pdf"
                 download
                 whileHover={{ y: -3, borderColor: "rgba(234,179,8,0.3)" }}
-                className="block p-5 rounded-2xl border border-black/06 dark:border-white/06 bg-black/02 dark:bg-white/02 transition-all group"
+                className="block p-5 rounded-2xl border border-black/[0.06] dark:border-white/[0.06] bg-[#f2f2ed] dark:bg-[#111010] transition-all group"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-2xl flex-shrink-0">
@@ -183,7 +183,7 @@ export default function Contact() {
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="p-7 rounded-2xl border border-black/06 dark:border-white/06 bg-black/02 dark:bg-white/02 space-y-5"
+                className="p-7 rounded-2xl border border-black/[0.06] dark:border-white/[0.06] bg-[#f2f2ed] dark:bg-[#111010] space-y-5"
                 noValidate
               >
                 <div className="grid sm:grid-cols-2 gap-5">
