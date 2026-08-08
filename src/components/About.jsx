@@ -134,13 +134,13 @@ export default function About() {
               <motion.div initial={{ width: 0 }} animate={{ width: 32 }} transition={{ duration: 0.6, delay: 0.2 }} className="h-px bg-yellow-400/40" />
             </motion.div>
 
-            {/* Typography Headline: 'Sameer Ranjan' on line 1, 'Nayak' in yellow on line 2 */}
+            {/* Typography Headline */}
             <div className="mb-4 sm:mb-8 overflow-hidden w-full text-center lg:text-left">
-              <h1 className="font-display font-black text-[clamp(2rem,6vw,4.8rem)] sm:text-[clamp(3rem,7vw,5.5rem)] leading-[1.02] sm:leading-[0.9] tracking-tighter text-gray-900 dark:text-white">
+              <h1 className="font-display font-black text-[clamp(1.75rem,5.5vw,4.8rem)] sm:text-[clamp(3rem,7vw,5.5rem)] leading-[1.05] sm:leading-[0.9] tracking-tighter text-gray-900 dark:text-white">
                 <span className="block overflow-hidden py-0.5">
                   <motion.span
                     variants={lineReveal(0.08)}
-                    className="block transform-gpu whitespace-nowrap"
+                    className="block transform-gpu"
                   >
                     Sameer Ranjan
                   </motion.span>
