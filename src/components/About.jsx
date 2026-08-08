@@ -74,7 +74,7 @@ export default function About() {
   });
 
   return (
-    <section id="about" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-32 pb-32 lg:pt-32 lg:pb-36">
+    <section id="about" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-24 pb-20 sm:pt-32 sm:pb-32 lg:pt-32 lg:pb-36">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 right-0 w-[550px] h-[550px] bg-yellow-400/[0.04] rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-teal-400/[0.04] rounded-full blur-[130px] pointer-events-none" />
@@ -84,18 +84,18 @@ export default function About() {
         variants={stagger}
         initial="hidden"
         animate={inView ? "show" : "hidden"}
-        className="max-w-7xl mx-auto px-6 w-full my-auto"
+        className="max-w-7xl mx-auto px-4 sm:px-6 w-full my-auto flex flex-col items-center"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* ─── Left Column: Portrait Card (Full-fit Left Side) ─── */}
-          <motion.div variants={portraitReveal} className="relative w-full h-full flex items-center justify-center">
+          {/* ─── Left Column: Compact Mobile Profile Card ─── */}
+          <motion.div variants={portraitReveal} className="relative w-full flex items-center justify-center">
             {/* Glow behind card */}
-            <div className="absolute -inset-4 rounded-[36px] bg-yellow-400/[0.08] blur-3xl pointer-events-none" />
+            <div className="absolute -inset-3 rounded-[32px] bg-yellow-400/[0.08] blur-2xl pointer-events-none" />
 
-            <div className="relative w-full h-full min-h-[480px] lg:min-h-[540px] max-w-lg">
+            <div className="relative w-full max-w-[260px] sm:max-w-md lg:max-w-lg aspect-[4/3] sm:aspect-[3/4] lg:aspect-auto min-h-[200px] sm:min-h-[380px] lg:min-h-[520px] mx-auto">
               {/* Glassmorphic card */}
-              <div className="relative w-full h-full min-h-[480px] lg:min-h-[540px] rounded-[32px] overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-[#f2f2ed] dark:bg-[#111111] shadow-2xl shadow-black/40 group flex flex-col justify-end">
+              <div className="relative w-full h-full min-h-[200px] sm:min-h-[380px] lg:min-h-[520px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-[#f2f2ed] dark:bg-[#111111] shadow-xl shadow-black/40 group flex flex-col justify-end">
                 {/* Full-fit cover image */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <img
@@ -107,26 +107,26 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
                 </div>
 
-                {/* Direct Text Overlay with Normal Casing */}
-                <div className="relative z-10 p-6 md:p-8 pt-16">
-                  <div className="font-mono text-xs font-medium text-yellow-400 mb-1.5">
+                {/* Direct Text Overlay */}
+                <div className="relative z-10 p-4 sm:p-6 md:p-8 pt-10 text-center sm:text-left">
+                  <div className="font-mono text-[10px] sm:text-xs font-medium text-yellow-400 mb-1">
                     📍 Gunupur, Odisha, India
                   </div>
-                  <div className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight leading-none">
+                  <div className="font-display font-extrabold text-xl sm:text-3xl text-white tracking-tight leading-none">
                     Sameer Ranjan Nayak
                   </div>
                 </div>
 
                 {/* Inner border highlight */}
-                <div className="absolute inset-0 rounded-[32px] border border-black/[0.05] dark:border-white/[0.05] pointer-events-none" />
+                <div className="absolute inset-0 rounded-[24px] sm:rounded-[32px] border border-black/[0.05] dark:border-white/[0.05] pointer-events-none" />
               </div>
             </div>
           </motion.div>
 
           {/* ─── Right Column: Editorial Landing Content ─── */}
-          <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+          <div className="text-center lg:text-left flex flex-col items-center lg:items-start w-full px-0 sm:px-4">
             {/* Section label */}
-            <motion.div variants={fadeSlideUp} className="inline-flex items-center gap-2 mb-4 md:mb-6 justify-center lg:justify-start">
+            <motion.div variants={fadeSlideUp} className="inline-flex items-center gap-2 mb-3 md:mb-6 justify-center lg:justify-start">
               <motion.div initial={{ width: 0 }} animate={{ width: 32 }} transition={{ duration: 0.6, delay: 0.2 }} className="h-px bg-yellow-400/40" />
               <span className="text-yellow-400 text-xs font-mono tracking-[0.2em] uppercase">
                 // 01 About
@@ -134,29 +134,21 @@ export default function About() {
               <motion.div initial={{ width: 0 }} animate={{ width: 32 }} transition={{ duration: 0.6, delay: 0.2 }} className="h-px bg-yellow-400/40" />
             </motion.div>
 
-            {/* Enhanced Kinetic Typography Headline */}
-            <div className="mb-6 md:mb-8 overflow-hidden w-full text-center lg:text-left">
-              <h1 className="font-display font-black text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.92] sm:leading-[0.88] tracking-tighter text-gray-900 dark:text-white perspective-[1000px]">
-                <span className="block overflow-hidden py-1">
+            {/* Typography Headline: 'Sameer Ranjan' on line 1, 'Nayak' in yellow on line 2 */}
+            <div className="mb-4 sm:mb-8 overflow-hidden w-full text-center lg:text-left">
+              <h1 className="font-display font-black text-[clamp(2rem,6vw,4.8rem)] sm:text-[clamp(3rem,7vw,5.5rem)] leading-[1.02] sm:leading-[0.9] tracking-tighter text-gray-900 dark:text-white">
+                <span className="block overflow-hidden py-0.5">
                   <motion.span
                     variants={lineReveal(0.08)}
-                    className="block transform-gpu origin-bottom sm:origin-bottom-left"
+                    className="block transform-gpu whitespace-nowrap"
                   >
-                    Sameer
+                    Sameer Ranjan
                   </motion.span>
                 </span>
-                <span className="block overflow-hidden py-1">
+                <span className="block overflow-hidden py-0.5">
                   <motion.span
-                    variants={lineReveal(0.2)}
-                    className="block transform-gpu origin-bottom sm:origin-bottom-left"
-                  >
-                    Ranjan
-                  </motion.span>
-                </span>
-                <span className="block overflow-hidden py-1">
-                  <motion.span
-                    variants={lineReveal(0.32)}
-                    className="block text-yellow-400 transform-gpu origin-bottom sm:origin-bottom-left"
+                    variants={lineReveal(0.25)}
+                    className="block text-yellow-400 transform-gpu"
                   >
                     Nayak
                   </motion.span>
@@ -165,11 +157,11 @@ export default function About() {
             </div>
 
             {/* Subtitle */}
-            <motion.div variants={fadeSlideUp} className="mb-5 md:mb-6 text-center lg:text-left">
-              <p className="font-display text-lg md:text-xl font-semibold text-gray-700 dark:text-white/80 tracking-tight">
+            <motion.div variants={fadeSlideUp} className="mb-4 sm:mb-6 text-center lg:text-left">
+              <p className="font-display text-base sm:text-xl font-semibold text-gray-700 dark:text-white/80 tracking-tight">
                 Computer Science Student
               </p>
-              <p className="text-gray-500 dark:text-white/40 text-xs md:text-sm font-mono mt-1">
+              <p className="text-gray-500 dark:text-white/40 text-xs sm:text-sm font-mono mt-0.5">
                 Full Stack Developer
               </p>
             </motion.div>
@@ -177,17 +169,17 @@ export default function About() {
             {/* Bio description */}
             <motion.p
               variants={fadeSlideUp}
-              className="text-gray-500 dark:text-white/55 text-sm md:text-base font-light leading-[1.8] mb-8 max-w-xl text-center lg:text-left"
+              className="text-gray-600 dark:text-white/60 text-sm sm:text-base font-light leading-[1.65] sm:leading-[1.8] mb-6 sm:mb-8 w-full max-w-[340px] sm:max-w-2xl text-center lg:text-left mx-auto lg:mx-0"
             >
               I'm a Computer Science student passionate about building intelligent web applications
               using Artificial Intelligence, Machine Learning, and modern web technologies. I enjoy
               turning ideas into products that solve real-world problems.
             </motion.p>
 
-            {/* ─── Stats Grid ─── */}
+            {/* ─── Stats Grid (Comfortable Side-by-Side) ─── */}
             <motion.div
               variants={fadeSlideUp}
-              className="grid grid-cols-2 gap-4 mb-8 w-full max-w-sm"
+              className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 w-full max-w-[340px] sm:max-w-md mx-auto lg:mx-0"
             >
               {STATS.map((stat, i) => (
                 <motion.div
@@ -195,15 +187,15 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.4 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative rounded-2xl border border-black/[0.06] dark:border-white/[0.06] bg-[#f2f2ed] dark:bg-[#111111] p-3.5 md:p-4 text-center group hover:border-yellow-400/20 transition-colors duration-300"
+                  className="relative rounded-2xl border border-black/[0.06] dark:border-white/[0.06] bg-[#f2f2ed] dark:bg-[#111111] p-3 sm:p-4 text-center group hover:border-yellow-400/20 transition-colors duration-300 flex flex-col justify-center min-h-[76px] sm:min-h-[88px]"
                 >
                   {/* Hover glow */}
                   <div className="absolute inset-0 rounded-2xl bg-yellow-400/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div className="relative">
-                    <div className="font-display font-black text-2xl md:text-3xl text-yellow-400 tracking-tight">
+                    <div className="font-display font-black text-xl sm:text-3xl text-yellow-400 tracking-tight leading-none">
                       {stat.value}
                     </div>
-                    <div className="text-gray-500 dark:text-white/35 text-[11px] font-mono mt-1 uppercase tracking-wider">
+                    <div className="text-gray-500 dark:text-white/40 text-[10px] sm:text-[11px] font-mono mt-1 uppercase tracking-wider leading-tight">
                       {stat.label}
                     </div>
                   </div>
@@ -211,17 +203,17 @@ export default function About() {
               ))}
             </motion.div>
 
-            {/* ─── Action Buttons ─── */}
+            {/* ─── Action Buttons (With Resume Spacing) ─── */}
             <motion.div
               variants={fadeSlideUp}
-              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6 sm:mb-8 w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0"
             >
               <motion.a
                 href="/Sameer_Ranjan_Nayak_Elite_Internship_CV_With_Certifications.pdf"
                 download
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-primary inline-flex items-center justify-center gap-2 min-h-[48px] px-6 text-sm font-bold rounded-full w-full sm:w-auto text-center"
+                className="btn-primary inline-flex items-center justify-center gap-2 min-h-[46px] sm:min-h-[48px] px-6 text-sm font-bold rounded-full w-full sm:w-auto text-center shadow-md touch-manipulation"
               >
                 <FiDownload className="w-4 h-4" />
                 Download Resume
@@ -230,7 +222,7 @@ export default function About() {
                 href="#projects"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
-                className="btn-secondary inline-flex items-center justify-center gap-2 min-h-[48px] px-6 text-sm font-bold rounded-full w-full sm:w-auto text-center"
+                className="btn-secondary inline-flex items-center justify-center gap-2 min-h-[46px] sm:min-h-[48px] px-6 text-sm font-bold rounded-full w-full sm:w-auto text-center shadow-sm touch-manipulation"
                 onClick={e => {
                   e.preventDefault();
                   document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });

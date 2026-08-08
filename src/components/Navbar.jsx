@@ -36,7 +36,18 @@ export default function Navbar({ theme, toggleTheme }) {
     setActive(href);
     setOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el) {
+      const offset = window.innerWidth < 768 ? 72 : 88;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
@@ -45,35 +56,35 @@ export default function Navbar({ theme, toggleTheme }) {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-3 md:top-4 inset-x-0 z-50 flex justify-center px-4 md:px-6 pointer-events-auto"
-        style={{ top: "calc(0.75rem + var(--sat, 0px))" }}
+        className="fixed top-2 sm:top-3 md:top-4 inset-x-0 z-50 flex justify-center px-2.5 sm:px-4 md:px-6 pointer-events-auto"
+        style={{ top: "calc(0.5rem + var(--sat, 0px))" }}
       >
         {/* Always Glassmorphic Floating Container */}
         <div
-          className={`w-full backdrop-blur-2xl backdrop-saturate-180 bg-white/70 dark:bg-[#0c0c0e]/75 border border-black/10 dark:border-white/10 shadow-2xl shadow-black/20 rounded-full transition-all duration-500 ease-out flex items-center justify-between ${
+          className={`w-full backdrop-blur-2xl backdrop-saturate-180 bg-white/80 dark:bg-[#0c0c0e]/80 border border-black/10 dark:border-white/10 shadow-2xl shadow-black/20 rounded-full transition-all duration-500 ease-out flex items-center justify-between ${
             scrolled
-              ? "max-w-4xl md:max-w-5xl px-4 py-2"
-              : "max-w-6xl md:max-w-6xl px-5 sm:px-6 py-2.5 sm:py-3"
+              ? "max-w-4xl md:max-w-5xl px-3 sm:px-4 py-1.5 sm:py-2"
+              : "max-w-6xl md:max-w-6xl px-3.5 sm:px-6 py-2 sm:py-3"
           }`}
         >
           {/* Brand Logo */}
           <motion.a
             href="#"
             onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-            className="flex items-center gap-2.5 group p-1 -ml-1"
+            className="flex items-center gap-1.5 sm:gap-2 group p-0.5"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-amber-400 to-orange-500 flex items-center justify-center text-black font-extrabold text-sm font-display shadow-md shadow-yellow-400/20">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-amber-400 to-orange-500 flex items-center justify-center text-black font-extrabold text-xs sm:text-sm font-display shadow-md shadow-yellow-400/20 flex-shrink-0">
               S
             </div>
-            <span className="font-display font-extrabold text-[15px] tracking-wide text-gray-900 dark:text-white transition-colors">
+            <span className="font-display font-extrabold text-xs sm:text-[15px] tracking-wide text-gray-900 dark:text-white transition-colors truncate">
               SAMEER
               <span className="text-yellow-400">.</span>
             </span>
           </motion.a>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links (Strictly hidden on mobile) */}
           <nav className="hidden md:flex items-center gap-1 bg-black/[0.03] dark:bg-white/[0.04] p-1 rounded-full border border-black/[0.04] dark:border-white/[0.06]">
             {links.map(link => (
               <button
@@ -97,14 +108,14 @@ export default function Navbar({ theme, toggleTheme }) {
             ))}
           </nav>
 
-          {/* Right Action Controls */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* Right Action Controls: Theme | Resume | Hamburger */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
             {/* Modern Theme Toggle Button */}
             <motion.button
               onClick={toggleTheme}
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.92 }}
-              className="w-10 h-10 rounded-full bg-black/[0.05] dark:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.1] flex items-center justify-center text-gray-700 dark:text-yellow-400 hover:border-yellow-400/40 transition-colors shadow-sm cursor-pointer overflow-hidden touch-manipulation"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/[0.05] dark:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.1] flex items-center justify-center text-gray-700 dark:text-yellow-400 hover:border-yellow-400/40 transition-colors shadow-sm cursor-pointer overflow-hidden touch-manipulation min-w-[32px] min-h-[32px]"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -116,34 +127,34 @@ export default function Navbar({ theme, toggleTheme }) {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
                   {theme === "dark" ? (
-                    <FiSun className="w-4.5 h-4.5 text-yellow-400" />
+                    <FiSun className="w-3.5 h-3.5 sm:w-4 h-4 text-yellow-400" />
                   ) : (
-                    <FiMoon className="w-4.5 h-4.5 text-gray-700" />
+                    <FiMoon className="w-3.5 h-3.5 sm:w-4 h-4 text-gray-700" />
                   )}
                 </motion.div>
               </AnimatePresence>
             </motion.button>
 
-            {/* Resume Button */}
+            {/* Mobile Resume Button */}
             <motion.a
               href="/Sameer_Ranjan_Nayak_Elite_Internship_CV_With_Certifications.pdf"
               download
               whileHover={{ scale: 1.04, y: -1 }}
               whileTap={{ scale: 0.96 }}
-              className="hidden md:flex btn-primary text-xs font-bold py-2 px-4.5 rounded-full shadow-md min-h-[40px] items-center justify-center"
+              className="btn-primary text-[10px] sm:text-xs font-bold py-1 px-2.5 sm:py-2 sm:px-4 rounded-full shadow-md min-h-[32px] sm:min-h-[36px] flex items-center justify-center whitespace-nowrap"
             >
               Resume ↓
             </motion.a>
 
-            {/* Mobile Hamburger Toggle (Minimum 44px touch target) */}
+            {/* Mobile Hamburger Toggle */}
             <button
-              className="md:hidden w-10 h-10 rounded-full bg-black/[0.05] dark:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] flex flex-col items-center justify-center gap-1.5 touch-manipulation"
+              className="md:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/[0.05] dark:bg-white/[0.08] border border-black/[0.08] dark:border-white/[0.08] flex flex-col items-center justify-center gap-1 touch-manipulation min-w-[32px] min-h-[32px]"
               onClick={() => setOpen(o => !o)}
               aria-label="Toggle navigation menu"
             >
-              <span className={`block w-4 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-300 ${open ? "rotate-45 translate-y-[4px]" : ""}`} />
-              <span className={`block w-4 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-              <span className={`block w-4 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-300 ${open ? "-rotate-45 -translate-y-[4px]" : ""}`} />
+              <span className={`block w-3.5 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-300 ${open ? "rotate-45 translate-y-[3.5px]" : ""}`} />
+              <span className={`block w-3.5 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+              <span className={`block w-3.5 h-0.5 bg-black/80 dark:bg-white/80 transition-all duration-300 ${open ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
             </button>
           </div>
         </div>

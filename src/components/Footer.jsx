@@ -57,11 +57,11 @@ export default function Footer() {
       <div className="absolute top-0 inset-x-0 h-px w-full bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent" />
 
       <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 pb-10 text-center md:text-left">
-          {/* Brand & Social (col-span-4) */}
-          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-4">
-            <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="flex items-center gap-2.5 w-max group">
+        {/* Main Layout Stack */}
+        <div className="flex flex-col items-center gap-8 pb-10 text-center">
+          {/* Brand & Tagline */}
+          <div className="flex flex-col items-center gap-3 max-w-md">
+            <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="flex items-center gap-2.5 group">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center text-black font-extrabold text-base shadow-md group-hover:scale-105 transition-transform">
                 S
               </div>
@@ -70,16 +70,16 @@ export default function Footer() {
               </span>
             </a>
 
-            <p className="text-gray-600 dark:text-white/60 max-w-sm font-sans text-sm leading-relaxed text-center md:text-left">
+            <p className="text-gray-600 dark:text-white/60 font-sans text-xs sm:text-sm leading-relaxed max-w-sm">
               Full-Stack Developer crafting intelligent, scalable, and high-impact web applications powered by modern technologies and AI.
             </p>
 
             {/* Social Link Icon Buttons */}
-            <div className="flex items-center justify-center md:justify-start gap-2.5 mt-2">
+            <div className="flex items-center justify-center gap-3 mt-1">
               {socialLinks.map((item, i) => (
                 <a
                   key={i}
-                  className="p-3 rounded-xl border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.04] text-gray-700 dark:text-white/70 hover:text-yellow-500 dark:hover:text-yellow-400 hover:border-yellow-400/40 dark:hover:border-yellow-400/40 hover:bg-yellow-400/10 transition-all shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="p-3 rounded-2xl border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.04] text-gray-700 dark:text-white/70 hover:text-yellow-500 dark:hover:text-yellow-400 hover:border-yellow-400/40 dark:hover:border-yellow-400/40 hover:bg-yellow-400/10 transition-all shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center"
                   target="_blank"
                   rel="noopener noreferrer"
                   href={item.link}
@@ -91,43 +91,29 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation Column (col-span-1) */}
-          <div className="md:col-span-1 flex flex-col items-center md:items-start gap-2">
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-gray-400 dark:text-white/40 mb-1">
-              Navigation
-            </span>
-            <div className="flex flex-col items-center md:items-start gap-1.5">
-              {navigateLinks.map(({ href, title }, i) => (
-                <a
-                  key={i}
-                  className="w-max py-1 text-sm text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline min-h-[36px] flex items-center"
-                  href={href}
-                  onClick={(e) => scrollTo(href, e)}
-                >
-                  {title}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Connect Column (col-span-1) */}
-          <div className="md:col-span-1 flex flex-col items-center md:items-start gap-2">
-            <span className="text-xs font-mono font-bold tracking-widest uppercase text-gray-400 dark:text-white/40 mb-1">
-              Connect
-            </span>
-            <div className="flex flex-col items-center md:items-start gap-1.5">
-              {connectLinks.map(({ href, title, external }, i) => (
-                <a
-                  key={i}
-                  className="w-max py-1 text-sm text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline min-h-[36px] flex items-center"
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                >
-                  {title}
-                </a>
-              ))}
-            </div>
+          {/* Nav & Connect Link Pills */}
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 py-3 border-y border-black/[0.06] dark:border-white/[0.06] w-full max-w-xl">
+            {navigateLinks.map(({ href, title }, i) => (
+              <a
+                key={i}
+                className="py-1 text-xs font-mono font-semibold uppercase tracking-wider text-gray-600 dark:text-white/70 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors"
+                href={href}
+                onClick={(e) => scrollTo(href, e)}
+              >
+                {title}
+              </a>
+            ))}
+            {connectLinks.map(({ href, title, external }, i) => (
+              <a
+                key={i}
+                className="py-1 text-xs font-mono font-semibold uppercase tracking-wider text-gray-600 dark:text-white/70 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors"
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+              >
+                {title}
+              </a>
+            ))}
           </div>
         </div>
 

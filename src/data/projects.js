@@ -95,6 +95,4 @@ export const projectFilters = [
   { id: "all",      label: "All Projects" },
   { id: "ai",       label: "AI / ML" },
   { id: "fullstack",label: "Full Stack" },
-  { id: "web",      label: "Web Dev" },
-  { id: "ml",       label: "Data Science" },
 ];

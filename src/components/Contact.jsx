@@ -93,22 +93,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-12 sm:py-24 relative overflow-hidden">
       {/* Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none">
         <div className="w-full h-full rounded-full bg-yellow-400/[0.05] blur-[100px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
         <SectionWrapper>
           <SectionHeader
-            label="// 06 — contact"
+            eyebrow="Contact"
             title="Let's Connect"
             subtitle="Open to internships, collaborations, and conversations about AI & web dev."
           />
         </SectionWrapper>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-start max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-10 items-start max-w-sm sm:max-w-md lg:max-w-6xl mx-auto mt-6 sm:mt-10">
           {/* Left info panel */}
           <div className="lg:col-span-2 space-y-6">
             <SectionWrapper>
